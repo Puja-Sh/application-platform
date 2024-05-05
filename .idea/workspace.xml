@@ -4,10 +4,7 @@
     <list default="true" id="04fd60fe-6683-4f64-a996-c0ddb0eb5b1a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/filters/Filters.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/filters/Filters.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/filters/filtersData.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/filters/filtersData.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/Home.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Components/jobs/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/jobs/Card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Components/jobs/List.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/jobs/List.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/utils/Dropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/Dropdown.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +73,7 @@
       <option name="presentableId" value="Default" />
       <updated>1714815119446</updated>
       <workItem from="1714815120697" duration="16151000" />
-      <workItem from="1714929708780" duration="10455000" />
+      <workItem from="1714929708780" duration="11457000" />
     </task>
     <servers />
   </component>

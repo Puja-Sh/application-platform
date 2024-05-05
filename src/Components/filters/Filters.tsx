@@ -15,32 +15,38 @@ const FilterHOC = [
         label: 'Roles',
         options: roles,
         filter: 'role',
+        width: 400
     },
     {
         label: 'Experience',
         options: minExperience,
         filter: 'experience',
         multiSelect: false,
+        width: 200
     },
     {
         label: 'Work Environment',
         options: workEnvironment,
         filter: 'environment',
+        width: 200
     },
     {
         label: 'Min Base Pay',
         options: minBasePay,
         filter: 'minPay',
         multiSelect: false,
+        width: 200
     },
 ]
 
 const Container = styled.div`
+  display: flex;
+  flex-wrap: wrap;
   width: 100%;
   margin-bottom: 40px;
-  
+
   .MuiInput-root, .MuiInput-input {
-    width: 100%;
+    width: 300px;
   }
 
   :after {
@@ -50,18 +56,19 @@ const Container = styled.div`
 
 const FilterContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
-  
-  .dropdown-component {
-    min-width: 200px;
-    width: 300px;
-  }
-  
-  @media screen and (max-width: 600px) {
-    .dropdown-component {
-      min-width: 90%;
-      width: 100%;
-    }
+  //flex-wrap: wrap;
+
+  //.dropdown-component {
+  //  min-width: 200px;
+  //  width: 300px;
+  //}
+  //
+  @media screen and (max-width: 900px) {
+    flex-wrap: wrap;
+    //.dropdown-component {
+    //  min-width: 90%;
+    //  width: 100%;
+    //}
   }
 `;
 
@@ -95,6 +102,7 @@ const Filters = ({ setAllFilters, setSearchValue }: IProps) => {
                         <Dropdown
                             className='dropdown-component'
                             key={ index }
+                            width={ item.width }
                             options={ item.options }
                             dropdownName={ item.label }
                             filterName={ item.filter }

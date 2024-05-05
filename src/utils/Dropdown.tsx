@@ -9,11 +9,11 @@ type IProps = {
     dropdownName: string;
     setAllFilters: Dispatch<SetStateAction<FiltersProps>>;
     filterName: string;
-    multiSelect?: boolean
+    multiSelect?: boolean;
+    width?: number
 }
 
 const Container = styled.div`
-  width: 100%;
   margin: 10px;
 
   li.group-header {
@@ -30,7 +30,15 @@ const Clear = styled.button`
   color: #7c7c7c;
 `;
 
-const Dropdown = ({ className='', options, dropdownName, setAllFilters, filterName, multiSelect = true }: IProps) => {
+const Dropdown = ({
+                      className = '',
+                      options,
+                      dropdownName,
+                      setAllFilters,
+                      filterName,
+                      multiSelect = true,
+                      width
+                  }: IProps) => {
     const [selected, setSelected] = useState<string[] | number[]>([]);
 
     const handleChange = (e: any) => {
@@ -46,9 +54,9 @@ const Dropdown = ({ className='', options, dropdownName, setAllFilters, filterNa
     }, [selected])
 
     return (
-        <Container className={className}>
-            <FormControl fullWidth size={ "small" } style={ { position: 'relative' } }>
-                <InputLabel id="demo-multiple-name-label">{ dropdownName }</InputLabel>
+        <Container className={ className }>
+            <FormControl fullWidth size={ "small" } style={ { position: 'relative', width: `${ width }px` } }>
+                <InputLabel id="demo-multiple-name-label" style={ { fontSize: '14px' } }>{ dropdownName }</InputLabel>
 
                 <Select
                     multiple={ multiSelect }
@@ -63,7 +71,7 @@ const Dropdown = ({ className='', options, dropdownName, setAllFilters, filterNa
                                   disabled={ item.isGroup }
                                   style={ {
                                       textTransform: `${ item.isGroup ? 'uppercase' : 'unset' }`,
-                                      fontSize: `${ item.isGroup ? '12px' : 'unset' }`
+                                      fontSize: `${ item.isGroup ? '12px' : 'unset' }`,
                                   } }
                         > { item.label }
 

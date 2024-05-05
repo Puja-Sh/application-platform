@@ -19,7 +19,7 @@ const Job = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0 1px 4px 0;
   margin: 10px;
   width: 360px;
-  height: 510px;
+  height: 570px;
   transition: all 0.2s ease-in-out;
 
   p {
@@ -32,7 +32,7 @@ const Job = styled.div`
     object-fit: contain;
     border-radius: 3px;
   }
-  
+
   &:hover {
     transform: scale(1.01);
   }
@@ -53,7 +53,7 @@ const Header = styled.div`
     margin-bottom: 3px;
     color: #8b8b8b;
   }
-  
+
   .location-text {
     font-size: 12px;
   }
@@ -86,7 +86,7 @@ const About = styled.div`
       box-shadow: inset white 0 -45px 45px
     }
   }
-  
+
   button {
     position: absolute;
     background: transparent;
@@ -105,7 +105,7 @@ const About = styled.div`
 const Experience = styled.div`
   margin-top: auto;
   color: #8b8b8b;
-  
+
   p:nth-child(2) {
     font-weight: 200;
     color: black;
@@ -120,7 +120,7 @@ const Apply = styled.button`
   padding: 8px 18px;
   border-radius: 8px;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.7;
   margin-top: 15px;
 `;
 
@@ -131,10 +131,24 @@ const Pill = styled.div`
   border: 1px solid rgb(230, 230, 230);
   margin-right: auto;
   margin-bottom: 10px;
-  p{
+
+  p {
     font-size: 10px;
   }
 `;
+
+const Referral = styled.button`
+  width: 100%;
+  color: white;
+  background-color: rgb(106, 75, 217);
+  font-weight: 500;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.7;
+  margin-top: 15px;
+`;
+
 
 const Card = ({ details }: { details: JobResponse }) => {
     const {
@@ -153,7 +167,7 @@ const Card = ({ details }: { details: JobResponse }) => {
 
     return (
         <Job>
-            <Pill> <p> ⌛ Posted 13 days ago </p> </Pill>
+            <Pill><p> ⌛ Posted 13 days ago </p></Pill>
             <Header className='details-header'>
                 <img src={ logoUrl }/>
                 <div>
@@ -164,7 +178,8 @@ const Card = ({ details }: { details: JobResponse }) => {
             </Header>
 
             <Salary>
-                <p>Estimated Salary: { currencySymbols[salaryCurrencyCode] }{ minJdSalary ?? 0 } - { maxJdSalary } LPA ✅ </p>
+                <p>Estimated Salary: { currencySymbols[salaryCurrencyCode] }{ minJdSalary ?? 0 } - { maxJdSalary } LPA
+                    ✅ </p>
             </Salary>
 
             <About>
@@ -180,7 +195,9 @@ const Card = ({ details }: { details: JobResponse }) => {
             </Experience>
 
             <Apply onClick={ () => {
-            } }> Ease Apply </Apply>
+            } }> ⚡️ Ease Apply </Apply>
+            <Referral onClick={ () => {
+            } }> Unlock Referral Asks </Referral>
 
         </Job>
     );
