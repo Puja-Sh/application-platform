@@ -20,6 +20,7 @@ const FilterHOC = [
         label: 'Experience',
         options: minExperience,
         filter: 'experience',
+        multiSelect: false,
     },
     {
         label: 'Work Environment',
@@ -30,10 +31,18 @@ const FilterHOC = [
         label: 'Min Base Pay',
         options: minBasePay,
         filter: 'minPay',
+        multiSelect: false,
     },
 ]
 
 const Container = styled.div`
+  width: 100%;
+  margin-bottom: 40px;
+  
+  .MuiInput-root, .MuiInput-input {
+    width: 100%;
+  }
+
   :after {
     border: none;
   }
@@ -41,16 +50,34 @@ const Container = styled.div`
 
 const FilterContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
+  
+  .dropdown-component {
+    min-width: 200px;
+    width: 300px;
+  }
+  
+  @media screen and (max-width: 600px) {
+    .dropdown-component {
+      min-width: 90%;
+      width: 100%;
+    }
+  }
 `;
 
 const InputElement = styled('input')`
   border-radius: 4px;
-  border: 1px solid rgb(133, 133, 133);
-  width: 320px;
-  font-size: 0.875rem;
+  border: 1px solid rgb(178, 178, 178);
+  font-size: 15px;
   font-weight: 400;
   line-height: 1.5;
   padding: 8px 12px;
+  margin-left: 10px;
+
+  &:focus {
+    outline: none;
+  }
+
 `;
 
 
@@ -66,11 +93,14 @@ const Filters = ({ setAllFilters, setSearchValue }: IProps) => {
                 {
                     FilterHOC.map((item, index) => (
                         <Dropdown
+                            className='dropdown-component'
                             key={ index }
                             options={ item.options }
                             dropdownName={ item.label }
                             filterName={ item.filter }
-                            setAllFilters={ setAllFilters }/>
+                            setAllFilters={ setAllFilters }
+                            multiSelect={ item.multiSelect }
+                        />
                     ))
                 }
             </FilterContainer>
@@ -79,7 +109,8 @@ const Filters = ({ setAllFilters, setSearchValue }: IProps) => {
                    type='text'
                    placeholder='Search Company Name'
                    slots={ { input: InputElement } }
-                   onChange={ inputChangeHandler }/>
+                   onChange={ inputChangeHandler }
+            />
         </Container>
     );
 };

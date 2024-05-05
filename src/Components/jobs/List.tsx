@@ -5,7 +5,6 @@ import Card from "./Card";
 
 type IProps = {
     jobs: JobResponse[];
-    fetchJobsApi: (limit: number, offset: number) => void;
     setParams: Dispatch<SetStateAction<{ limit: number, offset: number }>>
 }
 
@@ -15,16 +14,14 @@ const Main = styled.div`
   justify-content: center;
 `;
 
-const List = ({ jobs, fetchJobsApi, setParams }: IProps) => {
+const List = ({ jobs, setParams }: IProps) => {
 
     const handleScroll = useCallback(() => {
 
         const { scrollTop, clientHeight, scrollHeight } = document.documentElement
 
         if (Math.trunc(scrollTop + clientHeight) === scrollHeight) {
-            setTimeout(() => {
-                setParams(prev => ({ limit: prev.limit + 9, offset: prev.offset }))
-            },1000)
+            setParams(prev => ({ limit: prev.limit + 9, offset: prev.offset }))
         }
 
     }, [])
@@ -37,9 +34,9 @@ const List = ({ jobs, fetchJobsApi, setParams }: IProps) => {
 
     return (
         <Main>
-            {jobs.map(item => (
-                <Card key={item.jdUid} details={item}/>
-            ))}
+            { jobs.map(item => (
+                <Card key={ item.jdUid } details={ item }/>
+            )) }
         </Main>
     );
 };

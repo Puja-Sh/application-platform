@@ -4,11 +4,12 @@ import List from "../jobs/List";
 import { JobResponse, Response } from '../../def/response';
 import Loader from "../Loader/Loader";
 import filters from "../filters/Filters";
+import { minBasePay } from "../filters/filtersData";
 
 export type FiltersProps = {
     role: string[];
-    experience: number[];
-    minPay: number[];
+    experience: number;
+    minPay: number;
     environment: string[];
 }
 
@@ -20,8 +21,8 @@ const Home = () => {
     const [searchValue, setSearchValue] = useState<string>('');
     const [allFilters, setAllFilters] = useState<FiltersProps>({
         environment: [],
-        experience: [],
-        minPay: [],
+        experience: 0,
+        minPay: 0,
         role: []
     })
 
@@ -73,13 +74,75 @@ const Home = () => {
         }
     }, [searchValue]);
 
+    useEffect(() => {
+        const currentJobList = [...response.jdList];
+
+        let filterApplied = false;
+        const filterKey = Object.keys(allFilters);
+
+        for (let i = 0; i < filterKey.length; i++) {
+            // @ts-ignore
+            if (allFilters[filterKey[i]].length || allFilters[filterKey[i]] >= 0) {
+                filterApplied = true;
+                break;
+            }
+        }
+
+        if (!filterApplied) {
+            setJobList(currentJobList)
+            return;
+        }
+
+        const filteredJobs = currentJobList.filter(item => {
+            const role = item.jobRole.toLowerCase();
+            const minExperience = item.minExp ?? 0;
+            const environment = item.location.toLowerCase();
+            const minPay = item.minJdSalary ?? 0;
+            const maxPay = item.maxJdSalary ?? 0;
+
+            // Filters ---------------
+            const _role = allFilters.role ?? '';
+            const _minExperience = typeof allFilters.experience === 'object' ? -1 : allFilters.experience;
+            const _environment = allFilters.environment ?? '';
+            const _minPay = allFilters.minPay ?? 0;
+
+            let roleFlag = true;
+            let experienceFlag = true;
+            let environmentFlag = true;
+            let minBaseFlag = true;
+
+            if (_role.length) {
+                roleFlag = _role.includes(role);
+            }
+            if (_minExperience >= 0) {
+                experienceFlag = minExperience <= _minExperience;
+            }
+            if (_environment.length) {
+                const includeHybrid = _environment.includes('hybrid');
+                const includeRemote = _environment.includes('remote');
+
+                const isRemote = environment === 'remote';
+
+                environmentFlag = (isRemote && includeRemote) || (!isRemote && (includeHybrid || !_environment.includes('remote') && _environment.includes(environment)));
+            }
+            if (_minPay >= 10) {
+                minBaseFlag = minPay >= _minPay && _minPay <= maxPay
+            }
+
+            return roleFlag && experienceFlag && environmentFlag && minBaseFlag;
+        });
+
+
+        setJobList(filteredJobs)
+    }, [allFilters])
+
 
     // console.log("Response", response)
 
     return (
         <div>
             <Filters setAllFilters={ setAllFilters } setSearchValue={ setSearchValue }/>
-            <List jobs={ jobList } fetchJobsApi={ fetchJobsApi } setParams={ setParams }/>
+            <List jobs={ jobList } setParams={ setParams }/>
 
             <Loader show={ showLoader }/>
         </div>

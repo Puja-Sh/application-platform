@@ -19,7 +19,7 @@ const Job = styled.div`
   box-shadow: rgba(0, 0, 0, 0.25) 0 1px 4px 0;
   margin: 10px;
   width: 360px;
-  height: 480px;
+  height: 510px;
   transition: all 0.2s ease-in-out;
 
   p {
@@ -52,6 +52,10 @@ const Header = styled.div`
     letter-spacing: 1px;
     margin-bottom: 3px;
     color: #8b8b8b;
+  }
+  
+  .location-text {
+    font-size: 12px;
   }
 `;
 
@@ -120,6 +124,17 @@ const Apply = styled.button`
   margin-top: 15px;
 `;
 
+const Pill = styled.div`
+  padding: 4px 6px;
+  box-shadow: rgba(6, 6, 6, 0.05) 0px 2px 6px 0px;
+  border-radius: 10px;
+  border: 1px solid rgb(230, 230, 230);
+  margin-right: auto;
+  margin-bottom: 10px;
+  p{
+    font-size: 10px;
+  }
+`;
 
 const Card = ({ details }: { details: JobResponse }) => {
     const {
@@ -131,7 +146,6 @@ const Card = ({ details }: { details: JobResponse }) => {
         maxJdSalary,
         minJdSalary,
         minExp,
-        maxExp,
         location
     } = details ?? {};
 
@@ -139,17 +153,18 @@ const Card = ({ details }: { details: JobResponse }) => {
 
     return (
         <Job>
+            <Pill> <p> ⌛ Posted 13 days ago </p> </Pill>
             <Header className='details-header'>
                 <img src={ logoUrl }/>
                 <div>
                     <p className='company-name-text'> { companyName } </p>
                     <p className='role-text'> { role } </p>
-                    <p className='role-text'> { location } </p>
+                    <p className='location-text'> { location } </p>
                 </div>
             </Header>
 
             <Salary>
-                <p>Estimated Salary: { currencySymbols[salaryCurrencyCode] }{ minJdSalary } - { maxJdSalary } LPA ✅ </p>
+                <p>Estimated Salary: { currencySymbols[salaryCurrencyCode] }{ minJdSalary ?? 0 } - { maxJdSalary } LPA ✅ </p>
             </Salary>
 
             <About>

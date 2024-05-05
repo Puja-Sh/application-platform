@@ -4,28 +4,41 @@ import styled from "styled-components";
 import { FiltersProps } from "../Components/home/Home";
 
 type IProps = {
+    className?: string;
     options: { label: string | number, value: string | number | null, isGroup?: boolean }[];
     dropdownName: string;
     setAllFilters: Dispatch<SetStateAction<FiltersProps>>;
-    filterName: string
+    filterName: string;
+    multiSelect?: boolean
 }
 
 const Container = styled.div`
   width: 100%;
   margin: 10px;
-  
+
   li.group-header {
     color: red !important;
     background: green;
   }
 `;
 
-const Dropdown = ({ options, dropdownName, setAllFilters, filterName }: IProps) => {
+const Clear = styled.button`
+  position: absolute;
+  right: 30px;
+  top: 12px;
+  background: transparent;
+  color: #7c7c7c;
+`;
+
+const Dropdown = ({ className='', options, dropdownName, setAllFilters, filterName, multiSelect = true }: IProps) => {
     const [selected, setSelected] = useState<string[] | number[]>([]);
 
     const handleChange = (e: any) => {
-        console.log(e)
         setSelected(e.target.value)
+    }
+
+    const clearHandler = () => {
+        setSelected([])
     }
 
     useEffect(() => {
@@ -33,27 +46,31 @@ const Dropdown = ({ options, dropdownName, setAllFilters, filterName }: IProps) 
     }, [selected])
 
     return (
-        <Container>
-            <FormControl fullWidth size={ "small" }>
+        <Container className={className}>
+            <FormControl fullWidth size={ "small" } style={ { position: 'relative' } }>
                 <InputLabel id="demo-multiple-name-label">{ dropdownName }</InputLabel>
+
                 <Select
-                    multiple={ true }
+                    multiple={ multiSelect }
                     value={ selected }
                     onChange={ handleChange }
                     input={ <OutlinedInput label={ dropdownName }/> }
                 >
                     { options.map(item => (
                         <MenuItem key={ item.value }
-                                  value={ item.value as string}
+                                  value={ item.value as string }
                                   className={ item.isGroup ? 'group-header' : '' }
                                   disabled={ item.isGroup }
-                                  style={{
-                                      textTransform: `${item.isGroup ? 'uppercase' : 'unset'}`,
-                                      fontSize: `${item.isGroup ? '12px' : 'unset'}`
-                                  }}
-                        > { item.label } </MenuItem>
+                                  style={ {
+                                      textTransform: `${ item.isGroup ? 'uppercase' : 'unset' }`,
+                                      fontSize: `${ item.isGroup ? '12px' : 'unset' }`
+                                  } }
+                        > { item.label }
+
+                        </MenuItem>
                     )) }
                 </Select>
+                <Clear onClick={ clearHandler }> ⛌ </Clear>
             </FormControl>
 
         </Container>
