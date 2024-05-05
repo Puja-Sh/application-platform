@@ -5,7 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/home/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/home/Home.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/jobs/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/jobs/Card.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Components/jobs/List.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/Components/jobs/List.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/def/response.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/def/response.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,7 +23,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2fzsDJQKo0OTXizyOiUy63KD1cY" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="1" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -32,12 +36,21 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "/Users/pujasharma/Desktop/Mine/assignments/application-platform",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.standard": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.standard": "",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "configurable.group.build",
     "ts.external.directory.path": "/Users/pujasharma/Desktop/Mine/assignments/application-platform/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
@@ -63,7 +76,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1714815119446</updated>
-      <workItem from="1714815120697" duration="1233000" />
+      <workItem from="1714815120697" duration="16151000" />
+      <workItem from="1714929708780" duration="1943000" />
     </task>
     <servers />
   </component>
